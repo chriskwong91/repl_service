@@ -13,14 +13,26 @@ module.exports = {
     * @returns {nothing}
     */
   runCode: (code, path, callback) => {
+    var done = false;
+    //sanitize the repl input
+    var codeSanitized = code.split('\n').map((section) => {
+      var trimmed = section.trim();
+      var firstChar = trimmed.charAt(0);
+      if (firstChar === '.') {
+        return trimmed.slice(1);
+      }
+      return section;
+    }).join('\n');
+
+    console.log('code sant', codeSanitized);
+
     /**
       * @name input
       * @desc Push to-be-evaluated code to readable stream, ready by REPL.
       */
     var input = new stream.Readable();
-    console.log('code', code);
     input._read = function noop() {
-      input.push(code);
+      input.push(codeSanitized);
       input.push(null);
     };
 
@@ -30,7 +42,7 @@ module.exports = {
       */
     var output = new stream.Writable();
     var data = '';
-    output._write = function noop(chunk, encoding, callback) { // why is it called NOOP? 
+    output._write = function noop(chunk, encoding, callback) { // why is it called NOOP?
         data += chunk;
         callback();
     };

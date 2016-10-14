@@ -11,9 +11,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "fet": "mocha test/helpers/browser.js test/FrontEndSpec.js",
-    "test-client": "grunt karma",
-    "start": "nodemon server/server.js REPL_service/REPL_server.js Testing_service/testing_service.js",
+    "start": "nodemon repl_server.js",
     "lint": "grunt eslint",
     "post-install": "curl -s https://raw.githubusercontent.com/hackreactor-labs/pomander/master/bin/install | bash",
     "dev": "webpack -d --watch",
@@ -21,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hallowedraindrops/hallowedraindrops.git"
+    "url": "git+https://github.com/hallowedraindrops/repl_service.git"
   },
   "author": "",
   "license": "ISC",
@@ -72,14 +70,6 @@
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
     "pg": "^6.1.0",
-    "react": "^15.3.2",
-    "react-addons-test-utils": "^15.3.2",
-    "react-bootstrap": "^0.30.3",
-    "react-dom": "^15.3.2",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.8.1",
-    "react-router-redux": "^4.0.6",
-    "redux": "^3.6.0",
     "request": "^2.75.0",
     "request-promise": "^4.1.1",
     "sequelize": "^3.24.3",
